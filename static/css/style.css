@@ -1,3 +1,19 @@
 h1 {
     color: 'black'
     }
+
+.site-header {
+  min-width: 550px;
+  height: 150px;
+  margin-bottom: 150px;
+  padding-top: 30px;
+  background: #8ba15d;
+  background-size: cover;
+  color: #ffffff;
+}
+
+.container {
+  width: 510px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
