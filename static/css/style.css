@@ -7,9 +7,17 @@ h1 {
   height: 150px;
   margin-bottom: 150px;
   padding-top: 30px;
-  background: #8ba15d;
+  background: #8ba15d no-repeat center url("img/заставка.png");
   background-size: cover;
   color: #ffffff;
+}
+
+.site-header p {
+  width: 255px;
+  margin: 0 auto 26px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .container {
