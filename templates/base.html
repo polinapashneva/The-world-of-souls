@@ -14,10 +14,22 @@
         <div class="container">
             <h1>The world of souls</h1>
             <p>Мир душ</p>
+            {% if users %}
         </div>
+        <a class="navbar-brand" href="/logout">{{ user.name }}</a>
+    {% else %}
+        <p>
+            <div style="position:fixed; top:5%;  left:80%">
+            <a type='button' class="btn btn-dark" href="/register">Зарегистрироваться</a>
+            <a type='button' class="btn btn-dark" href="/login">Войти</a>
+    </div>
+        </p>
+    {% endif %}
     </nav>
 </header>
+<div style="position:fixed; left:2%">
 {% block content %}
 {% endblock %}
+</div>
 </body>
 </html>

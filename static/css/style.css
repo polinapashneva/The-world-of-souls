@@ -7,7 +7,7 @@ h1 {
   height: 150px;
   margin-bottom: 150px;
   padding-top: 30px;
-  background: #8ba15d no-repeat center url("img/заставка.png");
+  background: #8ba15d;
   background-size: cover;
   color: #ffffff;
 }
