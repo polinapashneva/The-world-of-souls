@@ -27,7 +27,7 @@ def world():
 
 
 @app.route('/edem')
-def world():
+def edem():
     return render_template('edem.html')
 
 
