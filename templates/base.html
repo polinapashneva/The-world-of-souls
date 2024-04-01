@@ -18,16 +18,14 @@
         </div>
         <a class="navbar-brand" href="/logout">{{ user.name }}</a>
     {% else %}
-        <p>
-            <div style="position:fixed; top:5%;  left:80%">
+        <p style="top:20px; right:20px">
             <a type='button' class="btn btn-dark" href="/register">Зарегистрироваться</a>
             <a type='button' class="btn btn-dark" href="/login">Войти</a>
-    </div>
         </p>
     {% endif %}
     </nav>
 </header>
-<div style="position:fixed; left:2%">
+<div style="margin-left:20px; margin-right:40px;">
 {% block content %}
 {% endblock %}
 </div>
