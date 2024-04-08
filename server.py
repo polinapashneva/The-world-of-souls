@@ -1,4 +1,5 @@
 import flask
+import requests
 from flask import Flask, render_template, redirect
 from flask_login import LoginManager, login_user
 
@@ -29,6 +30,17 @@ def world():
 @app.route('/edem')
 def edem():
     return render_template('edem.html')
+
+
+@app.route('/earth')
+def earth():
+    m = '30.314997,59.938784,vkbkm'
+    map_request = (f"https://static-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&z=0&size=700,300&scal=1&l=sat&pt={m}&lang=ru_RU")
+    response = requests.get(map_request)
+    map_file = "static/img/map.jpg"
+    with open(map_file, "wb") as file:
+        file.write(response.content)
+    return render_template('earth.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
