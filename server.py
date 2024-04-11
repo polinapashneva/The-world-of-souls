@@ -8,6 +8,8 @@ from data.loginform import LoginForm
 from data.registerform import RegisterForm
 from data.users import User
 
+from PIL import Image
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
@@ -34,12 +36,16 @@ def edem():
 
 @app.route('/earth')
 def earth():
-    m = '30.314997,59.938784,vkbkm'
-    map_request = (f"https://static-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&z=0&size=700,300&scal=1&l=sat&pt={m}&lang=ru_RU")
+    m = ['30.314997,59.938784,vkbkm', '111.095329,70.983309,vkbkm', '144.158095,63.988118,vkbkm',
+         '-70.203879,-6.370066,vkbkm', '-122.235129,73.023610,vkbkm', '123.858621,-27.540349,vkbkm']
+    map_request = (f"https://static-maps.yandex.ru/1.x/?ll=90.0,90.0&z=0&size=600,450&bbox=0.0,83.0~82.0,0.0&pt={'~'.join(m)}&l=map")
     response = requests.get(map_request)
     map_file = "static/img/map.jpg"
     with open(map_file, "wb") as file:
         file.write(response.content)
+    mpf = Image.open("static/img/map.jpg")
+    mp = mpf.crop((0, 100, 525, 450))
+    mp.save("static/img/map.png")
     return render_template('earth.html')
 
 
