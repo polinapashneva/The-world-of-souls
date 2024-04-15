@@ -20,7 +20,7 @@ def index():
     for user in session.query(User).all():
         print(user)
     users = session.query(User).all()
-    names = {name.id: (name.surname, name.name) for name in users}
+    names = {name.id: (name.name) for name in users}
     return render_template('start.html', names=names)
 
 
