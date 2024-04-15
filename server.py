@@ -37,7 +37,8 @@ def edem():
 @app.route('/earth')
 def earth():
     m = ['30.314997,59.938784,vkbkm', '111.095329,70.983309,vkbkm', '144.158095,63.988118,vkbkm',
-         '-70.203879,-6.370066,vkbkm', '-122.235129,73.023610,vkbkm', '123.858621,-27.540349,vkbkm']
+         '-70.203879,-6.370066,vkbkm', '-122.235129,73.023610,vkbkm', '123.858621,-27.540349,vkbkm',
+         '31.219977,29.980068,vkbkm']
     map_request = (f"https://static-maps.yandex.ru/1.x/?ll=90.0,90.0&z=0&size=600,450&bbox=0.0,83.0~82.0,0.0&pt={'~'.join(m)}&l=map")
     response = requests.get(map_request)
     map_file = "static/img/map.jpg"
@@ -54,10 +55,11 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         db_sess = db_session.create_session()
-        user = db_sess.query(User).filter(User.name == form.name.data).first()
+        user = db_sess.query(User).filter(User.email == form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
-            return redirect("/")
+            print('qwertyui')
+            return redirect('/')
         return render_template('login.html',
                                message="Неправильный логин или пароль",
                                form=form)
@@ -80,6 +82,7 @@ def reqister():
         user = User(
             name=form.name.data,
             email=form.email.data,
+            read=''
         )
         user.set_password(form.password.data)
         db_sess.add(user)
