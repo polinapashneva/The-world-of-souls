@@ -8,6 +8,5 @@ Pillow
 requests
 schedule
 SQLAlchemy
-urllib3
 Werkzeug
 WTForms
