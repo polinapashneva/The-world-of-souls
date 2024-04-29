@@ -1,4 +1,4 @@
-python3.9
+python3
 blinker
 certifi
 Flask
@@ -7,6 +7,7 @@ Flask-WTF
 Jinja2
 Pillow
 requests
+schedule
 SQLAlchemy
 urllib3
 Werkzeug
