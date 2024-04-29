@@ -49,6 +49,16 @@ def edem():
     return render_template('edem.html')
 
 
+@app.route('/hell')
+def hell():
+    return render_template('hell.html')
+
+
+@app.route('/hist')
+def hist():
+    return render_template('hist.html')
+
+
 @app.route('/earth')
 def earth():
     m = ['30.314997,59.938784,vkbkm', '111.095329,70.983309,vkbkm', '144.158095,63.988118,vkbkm',
@@ -64,6 +74,11 @@ def earth():
     mp = mpf.crop((0, 100, 525, 450))
     mp.save("static/img/map.png")
     return render_template('earth.html')
+
+
+@app.route('/fantom')
+def fantom():
+    return render_template('fantom.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -106,6 +121,11 @@ def reqister():
         db_sess.commit()
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
+
+
+@app.route('/promo')
+def promo():
+    return render_template('promo.html')
 
 
 def main():
