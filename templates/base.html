@@ -16,7 +16,7 @@
             <p>Мир душ</p>
             {% if current_user.is_authenticated %}
         </div>
-        <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+        <a style="top:20px; right:20px; position:absolute; color:white" class="navbar-brand" href="/logout">{{ current_user.name }}</a>
     {% else %}
         <p style="top:20px; right:20px; position:absolute;">
 
