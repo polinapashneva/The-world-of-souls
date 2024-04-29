@@ -35,6 +35,16 @@ html {
   margin: auto;
   width: auto;
 }
+
+body {
+  overflow-y: scroll;
+}
+
+html {
+  height: 100%;
+  margin: auto;
+  width: auto;
+}
 .btn btn-dark
 {
 align: right;

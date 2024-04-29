@@ -7,18 +7,20 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
     <title>The_world_of_souls</title>
-</head>
+<script type="text/javascript" src="/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=24uz-kxJjUWHh1ZcZRAz03pzNXDSOuqksTcQrGUiK7ZcB1s64V9Szkb2SjV9JcKWatb3GJiPBTIF0moVl84BcI_BhGaUn8spurVgArDO267Mn6ukYNlFsQM5zsyqgnjkz4uEDjlwJ_uR2poIpurgXNjCqBxdnWKAt5lU_4uYJJdD1ScOUyEyKGj2GT95tClJWW1LIjKBFT1MDbznRniaouLQJztYlyd5RH76mVLQhPp6GR9ASXCWjIVbXJFJxwClv0C_C9X4dq5zcrziY6KVpnYCpN-KqgTyZLR5yAsKLJfBlxn6O43fYbAniuCt2L_kkO_RGXQwX_88uIdGu_5-XFPKhxXFqs5JTn1ttC5zQsukm78zHQ-6iLXZ5TVEFfwb2c3TAlrPMUMPeRxu74hCQjDpf9mGAjsS0HeBlHxVYZulx442gnq6xaidUNcBvXITd8rpmWxI63fNkya3gsa3LJBqgvdJJpzDEUedglFgc0oF2Senu4flW9RmNV_eIOcH3dAOsxBDOtDhlSTXvVnnZNq3NmH7Np5eLmSwMkX9vkc6R1md8fFf21LHfIvmckIHIeCZF9NeE8JUH-pgYiulA9q4T8AdorIQIkNzrygSTDpfBgd0mGcRttNeZAHllgUHaVXIayjfI153QtJnAEdKRjiwkjTx8vaAOW1HPoj9Knz2yu19RqpF-KoS9QKk1i1NeSlVgEB3RC9JGAveOzpdxjGlOCgEmaxIW1Gaw66MO0T3hxxJ8PMvOGluGr-7eQ_bZgazCsbChEfJEXPL2a9YQ6JbgsY24SDTam5HuwUAEM866VPeGykND0B_xVFHzDO0-iBTxoR65wsWMRIwQcBhpxqvv1etWzlasfLLWg70-XiO70vvmpCEnfMsKcxdx4NYVGmjpV1Ll0k8PKwMP6nkbhN8Njb5ahjgdzPQ2KFFU-sWt8vphcXkU9EVztjiE8A1" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9zOTM5c2FzLnN0b3JhZ2UueWFuZGV4Lm5ldC9yZGlzay9kZjY3ZDkwNjVkODU0ZjBkMmVkOTVkM2NkYTY5MDQyN2Y4MDIwMTcxNmQwMTcwZDA5MWFiYmJhNzY5YmNiMzFmLzY2MjZhNTY0L2ZLcUluS3czZDdiTEZPZUZuTUduaEcybzQwWmRJSFBmTWsyR2hvQkV0Wi0zcldabXFHcExKSE55dmVVaEhFMDhRMGNtamhrR000VU9PT0ZseXdYS0NIelFYSnVqSDk4LUF6TUZKcGl5cDlTcjhucHVtWkhJNG1pZFBkV2hlY05xP3VpZD0wJmZpbGVuYW1lPWJhc2UlMjAlNWJpNnJPN2glNWQuaHRtbCZkaXNwb3NpdGlvbj1hdHRhY2htZW50Jmhhc2g9JmxpbWl0PTAmY29udGVudF90eXBlPXRleHQlMmZodG1sJm93bmVyX3VpZD0wJmZzaXplPTEyNTUmaGlkPTg3M2YzZWUwMWRhZDUwMDRlZjQwMjUzNDRjZThkODFkJm1lZGlhX3R5cGU9ZGV2ZWxvcG1lbnQmdGtudj12MiZldGFnPTA3YzVjYzk3MmUxZjMwYmVlZDRlMDlkY2FmN2IwMjkxJnRzPTYxNmIzMzEyOTIxMDAmcz00OWU2YThlNjBjOGMwNWJmNTA0MDI4ZDM4ZWNhZjVhMzg2M2U2YjRmNjc5ODBiODQyMTYyMjg2YzE1YjE3N2FkJnBiPVUyRnNkR1ZrWDE5QzhuNXZOODhFUU4zRDNoUU5fOXp4bHRsUG9rNXQ5M1Rma2IxYUdnaVA3bjhFRW43LW9aQ2N1VERXR2NMQklLQWMwRE0wYWZvZzNxY1A5ZVJzVG1DOFE1Y3d4TGdLREN3d2oyUXpEdlNkYm9kWjhkOV9COVZ1"/></head>
 <body>
 <header class="site-header">
     <nav>
         <div class="container">
             <h1>The world of souls</h1>
             <p>Мир душ</p>
-            {% if users %}
+            {% if current_user.is_authenticated %}
         </div>
-        <a class="navbar-brand" href="/logout">{{ user.name }}</a>
+        <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
     {% else %}
         <p style="top:20px; right:20px; position:absolute;">
+
+
             <a type='button' class="btn btn-dark" href="/register">Зарегистрироваться</a>
             <a type='button' class="btn btn-dark" href="/login">Войти</a>
         </p>

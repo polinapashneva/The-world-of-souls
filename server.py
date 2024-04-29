@@ -1,24 +1,39 @@
-import flask
 import requests
+from PIL import Image
 from flask import Flask, render_template, redirect
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, login_required, logout_user
 
 from data import db_session
 from data.loginform import LoginForm
 from data.registerform import RegisterForm
 from data.users import User
 
-from PIL import Image
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = db_session.create_session()
+    print(user_id)
+    return db_sess.query(User).get({'id': user_id})
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/")
 
 
 @app.route('/')
 def index():
     session = db_session.create_session()
     for user in session.query(User).all():
-        print(user)
+        print(user.id, 1)
     users = session.query(User).all()
     names = {name.id: (name.name) for name in users}
     return render_template('start.html', names=names)
@@ -39,7 +54,8 @@ def earth():
     m = ['30.314997,59.938784,vkbkm', '111.095329,70.983309,vkbkm', '144.158095,63.988118,vkbkm',
          '-70.203879,-6.370066,vkbkm', '-122.235129,73.023610,vkbkm', '123.858621,-27.540349,vkbkm',
          '31.219977,29.980068,vkbkm']
-    map_request = (f"https://static-maps.yandex.ru/1.x/?ll=90.0,90.0&z=0&size=600,450&bbox=0.0,83.0~82.0,0.0&pt={'~'.join(m)}&l=map")
+    map_request = (
+        f"https://static-maps.yandex.ru/1.x/?ll=90.0,90.0&z=0&size=600,450&bbox=0.0,83.0~82.0,0.0&pt={'~'.join(m)}&l=map")
     response = requests.get(map_request)
     map_file = "static/img/map.jpg"
     with open(map_file, "wb") as file:
@@ -56,8 +72,9 @@ def login():
     if form.validate_on_submit():
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.email == form.email.data).first()
+        print(user)
         if user and user.check_password(form.password.data):
-            login_user(user, remember=form.remember_me.data)
+            login_user(user, remember=True)  # form.remember_me.data)
             print('qwertyui')
             return redirect('/')
         return render_template('login.html',
@@ -66,7 +83,7 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['POST', 'GET'])
 def reqister():
     form = RegisterForm()
     if form.validate_on_submit():
@@ -93,7 +110,7 @@ def reqister():
 
 def main():
     db_session.global_init("db/users.db")
-    app.run(port=8080, host='127.0.0.1')
+    app.run()
 
 
 if __name__ == '__main__':
