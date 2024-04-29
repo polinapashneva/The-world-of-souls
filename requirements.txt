@@ -10,3 +10,4 @@ schedule
 SQLAlchemy
 Werkzeug
 WTForms
+urllib3==1.26.6
