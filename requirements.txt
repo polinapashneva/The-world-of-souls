@@ -1,4 +1,4 @@
-Python3
+python3.11
 blinker
 certifi
 Flask
